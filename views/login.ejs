@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <div class="wrapper">
+    <header>Login Form</header>
+    <form action="/login" method="POST">
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" placeholder="username or email" name="username">
+          <i class="icon fas fa-envelope"></i>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt">Username or email can't be blank</div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" placeholder="Password" name="password">
+          <i class="icon fas fa-lock"></i>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt">Password can't be blank</div>
+      </div>
+      <input type="submit" value="Login">
+    </form>
+    <div class="sign-txt">Wanna upgrade your GK knowledge? <a href="/register">Signup now</a></div>
+  </div>
+
+  <script>
+    const form = document.querySelector("form");
+    const eField = form.querySelector(".email"),
+    eInput = eField.querySelector("input"),
+    pField = form.querySelector(".password"),
+    pInput = pField.querySelector("input");
+
+    form.onsubmit = (e)=>{
+      e.preventDefault(); //preventing from form submitting
+      //if email and password are blank then add shake class in it else call specified function
+      (eInput.value == "") ? eField.classList.add("shake", "error") : checkUsernameOrEmail();
+      (pInput.value == "") ? pField.classList.add("shake", "error") : checkPass();
+
+      setTimeout(()=>{ //remove shake class after 500ms
+        eField.classList.remove("shake");
+        pField.classList.remove("shake");
+      }, 500);
+
+      eInput.onkeyup = ()=>{checkUsernameOrEmail();} //calling checkUsernameOrEmail function on username/email input keyup
+      pInput.onkeyup = ()=>{checkPass();} //calling checkPassword function on pass input keyup
+
+      function checkUsernameOrEmail(){ //checkUsernameOrEmail function
+        let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //pattern for validate email
+        let usernamePattern = /^[a-zA-Z0-9]+$/; //pattern for validate username
+        if(!eInput.value.match(emailPattern) && !eInput.value.match(usernamePattern)){ //if pattern not matched then add error and remove valid class
+          eField.classList.add("error");
+          eField.classList.remove("valid");
+          let errorTxt = eField.querySelector(".error-txt");
+          //if email/username value is not empty then show please enter valid email/username else show Username or email can't be blank
+          (eInput.value != "") ? errorTxt.innerText = "Enter a valid email address or username" : errorTxt.innerText = "Username or email can't be blank";
+        }else{ //if pattern matched then remove error and add valid class
+          eField.classList.remove("error");
+          eField.classList.add("valid");
+        }
+      }
+
+      function checkPass(){ //checkPass function
+        if(pInput.value == ""){ //if pass is empty then add error and remove valid class
+          pField.classList.add("error");
+          pField.classList.remove("valid");
+        }else{ //if pass is not empty then remove error and add valid class
+          pField.classList.remove("error");
+          pField.classList.add("valid");
+        }
+      }
+
+      //if eField and pField don't contain error class that means user filled details properly
+      if(!eField.classList.contains("error") && !pField.classList.contains("error")){
+        form.submit(); //submit the form
+      }
+    }
+  </script>
+
+</body>
+</html>

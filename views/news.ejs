@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/news.css">
+</head>
+<body>
+    <section class="articles">
+        <article>
+          <div class="article-wrapper">
+            <figure>
+              <img src="https://india.mom-gmr.org/uploads/tx_lfrogmom/media/16507-1592_import.png" alt="" />
+            </figure>
+            <div class="article-body">
+              <h2>Hindustan Times</h2>
+              <% HT.forEach(article => { %>
+              <ul>
+               <li>
+                <p>
+                  <%= article.title %>
+                </p>
+               </li>
+              </ul>
+             <% }) %>
+              <a href="https://www.hindustantimes.com" class="read-more">
+                Read more <span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+        <article>
+      
+          <div class="article-wrapper">
+            <figure>
+              <img src="https://www.livelaw.in/cms/wp-content/uploads/2013/06/Live-Law-_final-1000x7061.jpg" alt="" />
+            </figure>
+            <div class="article-body">
+              <h2>Live Law</h2>
+              <% LL.forEach(article => { %>
+                <ul>
+                 <li>
+                  <p>
+                    <%= article.title %>
+                  </p>
+                 </li>
+                </ul>
+               <% }) %>
+              <a href="https://www.livelaw.in" class="read-more">
+                Read more <span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+        <article>
+      
+          <div class="article-wrapper">
+            <figure>
+              <img src="https://www.mediainfoline.com/wp-content/uploads/2017/08/moneycontrol-new-logo.jpg" alt="" />
+            </figure>
+            <div class="article-body">
+              <h2>Money Control</h2>
+              <% HT.forEach(article => { %>
+                <ul>
+                 <li>
+                  <p>
+                    <%= article.title %>
+                  </p>
+                </ul>
+               <% }) %>
+              <a href="https://www.moneycontrol.com" class="read-more">
+                Read more <span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+</body>
+</html>
