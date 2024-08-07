@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/news.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
+  <button  class="button-74" role="button" id="screenshotButton">Take Screenshot</button>
     <section class="articles">
         <article>
           <div class="article-wrapper">
@@ -86,4 +88,23 @@
         </article>
       </section>
 </body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const screenshotButton = document.getElementById('screenshotButton');
+      screenshotButton.addEventListener('click', function() {
+          const articlesSection = document.querySelector('.articles');
+          html2canvas(articlesSection, {
+              useCORS: true, // Enable cross-origin resource sharing for images
+              logging: true, // Enable logging for debugging
+              allowTaint: true, // Allow cross-origin images to be used
+          }).then(canvas => {
+              const link = document.createElement('a');
+              link.href = canvas.toDataURL('image/png');
+              link.download = 'screenshot.png';
+              link.click();
+          });
+      });
+  });
+  </script>
 </html>
