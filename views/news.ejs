@@ -69,7 +69,7 @@
             </figure>
             <div class="article-body">
               <h2>Money Control</h2>
-              <% HT.forEach(article => { %>
+              <% MC.forEach(article => { %>
                 <ul>
                  <li>
                   <p>
@@ -89,6 +89,13 @@
       </section>
 </body>
 
+<section class="note-section">
+  <h2>Take Your Notes</h2>
+  <textarea id="notes" placeholder="Write your notes here..."></textarea>
+  <button id="download-notes">Download Notes</button>
+</section>
+
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
       const screenshotButton = document.getElementById('screenshotButton');
@@ -106,5 +113,20 @@
           });
       });
   });
+
+
+  // js for the note taking section
+  document.getElementById("download-notes").addEventListener("click", function() {
+        const notes = document.getElementById("notes").value;
+        const blob = new Blob([notes], { type: "text/plain" });
+        const link = document.createElement("a");
+
+        link.href = URL.createObjectURL(blob);
+        link.download = "notes.txt";
+        link.click();
+
+        URL.revokeObjectURL(link.href);
+    });
+    
   </script>
 </html>
